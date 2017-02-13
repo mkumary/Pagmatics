@@ -14,12 +14,12 @@ var Observer = function(){
         var html = "";
         html += "<tr><th>id</th><th>name</th><th>price</th><th>updated</th><th>lastexecuted</th> <th>tags</th></tr>";
         observerList.forEach(function(element, index){
-         html += "<tr><td>"+element.id+"</td><td>"+element.name+"</td><td>"+element.price+"</td><td>"+element.datetimes.updated+"</td><td>"+element.datetimes.lastexecuted+"</td><td>"+element.tags+"</td></tr>"
+         html += "<tr><td>"+element.id+"</td><td>"+element.name+"</td><td>"+element.price+"</td><td>"+element.datetimes.updated+"</td><td>"+element.datetimes.lastexecuted+"</td><td class='tags'>"+element.tags+"</td></tr>"
         });
         $('tbody').append(html);
     }
     var updateList = function(element){
-      $('tbody').append("<tr><td>"+element.id+"</td><td>"+element.name+"</td><td>"+element.price+"</td><td>"+element.datetimes.updated+"</td><td>"+element.datetimes.lastexecuted+"</td><td>"+element.tags+"</td></tr>");
+      $('tbody').append("<tr><td>"+element.id+"</td><td>"+element.name+"</td><td>"+element.price+"</td><td>"+element.datetimes.updated+"</td><td>"+element.datetimes.lastexecuted+"</td><td class='tags'>"+element.tags+"</td></tr>");
     }
 
     var sortByLastUpdate = function(){
@@ -78,5 +78,12 @@ var ObserverList = new Observer();
     $('.lastExecuted').on('click', function(){
         ObserverList.sortByLastExecuted();
     });
+    $('.tagFilter').on('keyup', function(event){
+        var searchValue = $(event.target).val();
+        $('.tags').each(function(index,element){
+            debugger;
+            $(element).closest('tr').css('display', $(element).text().indexOf(searchValue) === -1 ? "none" : "");
+        })
+    })
 
 })
