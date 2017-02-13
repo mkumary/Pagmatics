@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "Client ABC",
+  "price": 12.50,
+  "datetimes":{
+  "updated":"2016-01-01T23:28:56.782Z",
+  "lastexecuted":"2016-04-01T23:29:11.045Z"
+},
+"tags": ["this", "that", "other"]
+}
