@@ -49,7 +49,14 @@ var Observer = function(){
 
 $(document).ready(function(){
 var ObserverList = new Observer();
+    /*
+    *  ajaxActive needed to block ajax call if its already active.
+    * */
     var ajaxActive = false;
+
+    /*
+     added setIntervl method so that ajax call happens in every second.
+     */
     setInterval(function(){
         if(ajaxActive){
             return;
@@ -72,6 +79,12 @@ var ObserverList = new Observer();
     }, 1000)
 
 
+
+    /*
+    code changes for adding filter functionality
+     */
+
+
     $('.lastUpdated').on('click', function(){
         ObserverList.sortByLastUpdate();
     });
@@ -81,7 +94,6 @@ var ObserverList = new Observer();
     $('.tagFilter').on('keyup', function(event){
         var searchValue = $(event.target).val();
         $('.tags').each(function(index,element){
-            debugger;
             $(element).closest('tr').css('display', $(element).text().indexOf(searchValue) === -1 ? "none" : "");
         })
     })
